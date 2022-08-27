@@ -64,11 +64,10 @@ def index(request):
             global emesi
             if i[0] == ("Employer ESI"):
                 a6 = int(i[1])
-                p6 = 0+(a6 * 100) / a
+                p6 = (a6 * 100) / a
                 emesi=0+(a*p6)/100
                 my_dict["Employer ESI"].append(emesi)
-        xx = basi + hraa + spall + empf + emesi
-        my_dict["Base Salary"].append(xx)
+
         for i in excel_data:
             if i[0] == ("Annual Short-Term Bonus"):
                 a7 = int(i[1])
@@ -99,7 +98,8 @@ def index(request):
                 p11 = 0+(a11 * 100) / a
                 rb = 0+(a*p11)/100
                 my_dict["Relocation Bonus"].append(rb)
-
+        xx=basi+hraa+spall+empf+emesi
+        my_dict["Base Salary"].append(xx)
         new_row.append(my_dict)
         mylist = new_row
         # return render(request, 'index.html', {"excel_data":excel_data})
